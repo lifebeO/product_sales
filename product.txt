@@ -1,0 +1,67 @@
+Dataframe-1: df_amz
+df_amz.columns
+Output: Index(['index', 'Order ID', 'Date', 'Status', 'Fulfilment', 'Sales Channel ',
+       'ship-service-level', 'Style', 'SKU', 'Category', 'Size', 'ASIN',
+       'Courier Status', 'Qty', 'currency', 'Amount', 'ship-city',
+       'ship-state', 'ship-postal-code', 'ship-country', 'promotion-ids',
+       'B2B', 'fulfilled-by', 'Unnamed: 22'],
+      dtype='object')
+2. Dataframe-2: df_sale
+
+df_sale.columns
+Output: Index(['SKU', 'Design No.', 'Stock', 'Category', 'Size', 'Color'], dtype='object')
+Kind of visualization
+Some possible cases for data visualization using different types of charts and graphs:
+
+1. Bar Chart: Visualize categorical data by plotting bars of different heights. Useful for comparing data across different categories or groups.
+
+2. Pie Chart: Represent data as slices of a pie, showing the proportion or percentage distribution of different categories.
+
+3. Line Plot: Display the relationship between two continuous variables by plotting data points connected by lines. Suitable for visualizing trends or patterns over time.
+
+4. Scatter Plot: Plot individual data points in a Cartesian coordinate system to show the relationship between two continuous variables. Useful for identifying correlations or clusters in the data.
+
+5. Histogram: Display the distribution of a single numeric variable by dividing the data into bins and showing the frequency or count of observations in each bin.
+
+6. Box Plot: Visualize the distribution of a continuous variable through quartiles, outliers, and other statistical measures. Helps in identifying skewness, outliers, and variability in the data.
+
+7. Heatmap: Display a matrix of data as a grid of colored squares, where the colors represent the values. Useful for visualizing correlations or patterns in a tabular dataset.
+
+8. Area Chart: Plot the cumulative values of multiple variables over time, showing the contribution of each variable to the total.
+
+9. Violin Plot: Combine the features of a box plot and a kernel density plot to visualize the distribution and density of a variable.
+
+10. Bubble Chart: Represent data points as bubbles on a scatter plot, where the size or color of the bubble represents a third variable.
+
+11. TreeMap: Display hierarchical data as nested rectangles, where the size of each rectangle represents a value.
+
+12. Radar Chart: Display multivariate data on a two-dimensional chart with multiple axes, showing the values of each variable relative to a central point.
+
+So below, we will be plotting these kinds of plots and analyzing the sales, and on the basis of this analysis, we will make some conclusions.
+
+Market view
+Visualize the sales quantities or revenue by category using a bar chart:
+# Creating subplots with 1 row and 2 columns
+fig, axs = plt.subplots(1, 2, figsize=(12, 5))
+
+# Bar Chart of 'Category' in df_amzcopy
+category_counts = df_amzcopy['Category'].value_counts()
+axs[0].bar(category_counts.index, category_counts.values)
+axs[0].set_xlabel('Category')
+axs[0].set_ylabel('Count')
+axs[0].set_title('Products sold on Amazon vs Category')
+axs[0].tick_params(axis='x', rotation=90)
+
+# Bar Chart of 'Size' in df_amzcopy
+size_counts = df_amzcopy['Size'].value_counts()
+axs[1].bar(size_counts.index, size_counts.values)
+axs[1].set_xlabel('Size')
+axs[1].set_ylabel('Count')
+axs[1].set_title('Products sold on Amazon vs Size')
+axs[1].tick_params(axis='x', rotation=90)
+
+# Adjust the spacing between subplots
+plt.tight_layout()
+
+# Show the plot
+plt.show()
